@@ -7,7 +7,6 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   label: string;
-  disabled?: boolean;
 }
 
 const buttonVariants = cva(
@@ -35,15 +34,11 @@ const buttonVariants = cva(
   }
 );
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { label, className, children, disabled, variant, size, width, ...props },
-    ref
-  ) => {
+  ({ label, className, children, variant, size, width, ...props }, ref) => {
     return (
       <button
         className={cn(buttonVariants({ variant, size, width, className }))}
         ref={ref}
-        disabled={disabled}
         {...props}
       >
         {label}
