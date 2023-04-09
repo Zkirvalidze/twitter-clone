@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, Children } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -7,12 +7,7 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   label: string;
-  secondary?: boolean;
-  large?: boolean;
-  onClick: () => void;
-  disabled: boolean;
-  outline?: boolean;
-  fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const buttonVariants = cva(
@@ -40,13 +35,16 @@ const buttonVariants = cva(
   }
 );
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ label, className,children, disabled, onClick, variant, size }, ref) => {
+  (
+    { label, className, children, disabled, variant, size, width, ...props },
+    ref
+  ) => {
     return (
       <button
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, width, className }))}
         ref={ref}
         disabled={disabled}
-        onClick={onClick}
+        {...props}
       >
         {label}
         {children}

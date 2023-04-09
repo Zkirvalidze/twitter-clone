@@ -1,7 +1,8 @@
 
 import Sidebar from '@/components/layout/Sidebar';
-import './globals.css';
 import FollowBar from '@/components/layout/FollowBar';
+import './globals.css';
+import Modal from '@/components/Modal';
 
 export const metadata = {
   title: 'twitter',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        
         <div className="h-screen bg-black">
           <div className="container h-full mx-auto xl:px-30 max-w-6xl">
             <div className="grid grid-cols-4 h-full">
