@@ -33,18 +33,25 @@ const RegisterModal = () => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-
-      // To DO
+      await axios.post('api/register', {
+        email,
+        password,
+        username,
+        name,
+      });
 
       toast.success('Account created.');
-
+      signIn('credentials', {
+        email,
+        password,
+      });
       registerModal.onClose();
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
       setIsLoading(false);
     }
-  }, [registerModal]);
+  }, [registerModal, username, email, password, name]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
