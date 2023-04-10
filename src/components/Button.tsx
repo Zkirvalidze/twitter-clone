@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/libs/utils';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 
